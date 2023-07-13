@@ -116,5 +116,9 @@ public class GameController {
 	// Good practice to avoid directly accessing attributes, use getters and setters instead
     private Random getRandomGenerator() {
         return randomGenerator;
+    
+   }
+    private int getnumber(){
+    return 0:
     }
 }
