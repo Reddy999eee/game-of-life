@@ -1,16 +1,21 @@
-pipeline {
-   agent (label: jdk8)
-   stages {
-        stage('Git Checkout'){
-           git branch: 'dev', url:'https://github.com/Reddy999eee/game-of-life.git'
+pipeline{
+    agent (label jdk8)
+    stages{
+        stage ('Git Checkout'){
+            steps {
+                git beanch: 'dev', url:'https://github.com/Reddy999eee/game-of-life.git'
             }
-         stage ('Build'){
-         sh 'mvn clean packge'
+        }
+        stage('Build'){
+            steps {
+                sh 'mvn clean package'
             }
-         stage ('Archive & Test Results'){
-        junit: '**/surefire-reports/*.xml'
-       archiveArtifacts artifacts: '**/*.var' followSymlinks:false
-}
-}
-
+        }
+        stage ('Archeive & Test Results'){
+            steps {
+                junit: '**/surefire-reports/*.xml'
+                archiveArtifacts artifacts: '**/*.war' followSymlinks:false
+            }
+        }
+    }
 }
