@@ -1,5 +1,8 @@
 pipeline{
     agent (label 'jdk8')
+    tools {
+    jdk 'jdk8'
+    }
     stages{
         stage ('Git Checkout'){
             steps {
